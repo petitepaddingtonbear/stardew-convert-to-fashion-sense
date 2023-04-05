@@ -128,13 +128,20 @@ fsPromises.rm('./output', {recursive: true}).then(() => {
           let shirtObject = _.cloneDeep(isColorable ? COLORABLE_SHIRT : NON_COLORABLE_SHIRT);
 
 
-          shirtObject["Name"] = file.Name;
-          if (options.authorName) {
-            shirtObject["Name"] = `${options.authorName}'s ${options.hasSleeves ? '' : 'Summer '}Shirt ` + shirtObject["Name"];
+         shirtObject["Name"] = file.Name;
+          if (options.authorName && options.prefix) {
+            shirtObject["Name"] = `${options.authorName}'s `+ `${options.prefix} ` + `Shirt ` + shirtObject["Name"];
           }
           if (!options.authorName && options.prefix) {
-            shirtObject["Name"] = `${options.prefix} '` + shirtObject["Name"];
+            shirtObject["Name"] = `${options.prefix} ` + 'Shirt ' + shirtObject["Name"];
           }
+          if (options.authorName && !options.prefix) {
+            shirtObject["Name"] = `${options.authorName}'s ` + `Shirt ` + shirtObject["Name"];
+          }
+          if (!options.authorName && !options.prefix) {
+            shirtObject["Name"] = shirtObject["Name"];
+          }
+		
           //shirtObject["Name"] = "Author's " + shirtObject["Name"];
           if  (isColorable) {
             shirtObject["Name"] += " (Dyeable)";
