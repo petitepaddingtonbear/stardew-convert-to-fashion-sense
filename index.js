@@ -129,12 +129,19 @@ fsPromises.rm('./output', {recursive: true}).then(() => {
 
 
           shirtObject["Name"] = file.Name;
-          if (options.authorName) {
-            shirtObject["Name"] = `${options.authorName}'s ${options.hasSleeves ? '' : 'Summer '}Shirt ` + shirtObject["Name"];
+          if (options.authorName && options.prefix) {
+            shirtObject["Name"] = `${options.authorName}'s `+ `${options.prefix} ` + `Shirt ` + shirtObject["Name"];
           }
           if (!options.authorName && options.prefix) {
-            shirtObject["Name"] = `${options.prefix} '` + shirtObject["Name"];
+            shirtObject["Name"] = `${options.prefix} ` + 'Shirt ' + shirtObject["Name"];
           }
+          if (options.authorName && !options.prefix) {
+            shirtObject["Name"] = `${options.authorName}'s ` + `Shirt ` + shirtObject["Name"];
+          }
+          if (!options.authorName && !options.prefix) {
+            shirtObject["Name"] = shirtObject["Name"];
+          }
+
           //shirtObject["Name"] = "Author's " + shirtObject["Name"];
           if  (isColorable) {
             shirtObject["Name"] += " (Dyeable)";
@@ -142,7 +149,7 @@ fsPromises.rm('./output', {recursive: true}).then(() => {
 
           const shirtModelArray = ['BackShirt', 'FrontShirt', 'LeftShirt', 'RightShirt'];
 
-          if (options.hasSleeves == false) {
+          if (options.hasSleeves != true) {
             shirtModelArray.forEach((shirtModel) => {
               delete shirtObject[shirtModel].SleeveColors;
             })
@@ -185,25 +192,33 @@ fsPromises.rm('./output', {recursive: true}).then(() => {
         if (isHair) {
           // expected input from the sprite cutter website referenced in the README
           // in the format `tile000.png`...
+
           const paddedIndex = _.replace(_.replace(fileName, 'tile', ''), '.png', '');
           fsPromises.mkdir(`./output/${paddedIndex}`).then(() => {
             if (isHair) {
               let hairstyleObject = _.cloneDeep(isColorable ? COLORABLE_HAIR : UNCOLORABLE_HAIR);
 
-              //NOTE: CHANGE THE BELOW VARIABLES TO MATCH YOUR RUN
-              let authorName = '';
-              let hairDescriptor = 'Long';    // Long, Short, Wavy, etc.
-
-              if (options.authorName) {
+          if (options.authorName) {
                 authorName = options.authorName;
               }
               if (options.hairDescriptor) {
                 hairDescriptor = options.hairDescriptor;
               }
 
-              // set the object's display name
-              hairstyleObject["Name"] = `${authorName}'s ${hairDescriptor} Hairstyle ${paddedIndex}`;
-              //hairstyleObject["Name"] = `${hairDescriptor} Sakura Hairstyle ${paddedIndex}`;
+          hairstyleObject["Name"] = paddedIndex;
+          if (options.authorName && options.hairDescriptor) {
+            hairstyleObject["Name"] = `${options.authorName}'s `+ `${options.hairDescriptor} ` + hairstyleObject["Name"];
+          }
+          if (!options.authorName && options.hairDescriptor) {
+            hairstyleObject["Name"] = `${options.hairDescriptor} ` + hairstyleObject["Name"];
+          }
+          if (options.authorName && !options.hairDescriptor) {
+            hairstyleObject["Name"] = `${options.authorName}'s ` + hairstyleObject["Name"];
+          }
+          if (!options.authorName && !options.hairDescriptor) {
+            hairstyleObject["Name"] = hairstyleObject["Name"];
+          }
+
               if  (isColorable) {
                 hairstyleObject["Name"] += " (Dyeable)";
               }
