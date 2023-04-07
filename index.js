@@ -461,9 +461,9 @@ const NON_COLORABLE_SHIRT = {
   "Name": "",
   "FrontShirt": {
     "SleeveColors": [
-      [ 225, 218, 218],
-      [ 241, 234, 234 ],
-      [ 250, 243, 243],
+      [ 225, 218, 219],
+      [ 241, 234, 235 ],
+      [ 250, 243, 244],
     ],
     "DisableGrayscale": true,
     "StartingPosition": {
@@ -481,9 +481,9 @@ const NON_COLORABLE_SHIRT = {
   },
   "RightShirt": {
     "SleeveColors": [
-      [ 225, 218, 218],
-      [ 241, 234, 234 ],
-      [ 250, 243, 243],
+      [ 225, 218, 219],
+      [ 241, 234, 235 ],
+      [ 250, 243, 244],
     ],
     "DisableGrayscale": true,
     "StartingPosition": {
@@ -501,9 +501,9 @@ const NON_COLORABLE_SHIRT = {
   },
   "LeftShirt": {
     "SleeveColors": [
-      [ 225, 218, 218],
-      [ 241, 234, 234 ],
-      [ 250, 243, 243],
+      [ 225, 218, 219],
+      [ 241, 234, 235 ],
+      [ 250, 243, 244],
     ],
     "DisableGrayscale": true,
     "StartingPosition": {
@@ -521,9 +521,9 @@ const NON_COLORABLE_SHIRT = {
   },
   "BackShirt": {
     "SleeveColors": [
-      [ 225, 218, 218],
-      [ 241, 234, 234 ],
-      [ 250, 243, 243],
+      [ 225, 218, 219],
+      [ 241, 234, 235 ],
+      [ 250, 243, 244],
     ],
     "DisableGrayscale": true,
     "StartingPosition": {
