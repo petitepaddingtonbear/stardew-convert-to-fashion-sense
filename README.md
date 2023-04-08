@@ -145,7 +145,7 @@ running the command mentioned above. Go ahead and drag the contents of the
 `output` directory into a directory called `Shirts` in your Fashion Sense pack.
 
 ### Step 5 - Fix the Sleeves!
-Currently all sleeves default to white, but [my fork](https://github.com/petitepaddingtonbear/sleeveColorizer) of Elizabeth's Sleeve Colorizer can fix that with a Python script!
+Currently all sleeves default to white, but Elizabeth's Sleeve Colorizer script](https://github.com/elizabethcd/sleeveColorizer) can fix that with a Python script!
 
 
 
