@@ -20,6 +20,19 @@ To run the code, you'll need node.js and npm, instructions found [here](https://
 5. Create two empty folders inside the project directory, one called `input` and one called `output` 
 6. Follow the instructions below, depending on what type of conversion you want to perform. 
 
+## If You Will Be Converting Json Assets Shirts Files That Include Unicode:
+1. Download [this](https://www.nexusmods.com/stardewvalley/mods/9961?tab=files) JSON batch translator by Kartoffels and extract it to wherever you want. The sleeve_colorizer script you will be using does NOT like unicode characters such as Chinese, Japanese, or Korean characters, and you'll actually be able to read what your items are.
+2. Download and install Python if you have not already.
+3. Open the get_json.py script **with a text editor** in the directory.
+4. Delete line 12, `print(data)`. On line 15, `n = n + S1`, delete the S. **If you do not do these two things, the script will not work with the latest version of Python.** Then save the script.
+5. Create a folder titled "translate" in the directory.
+6. Drag the contents of your Shirts folder into the "translate" folder.
+7. Open terminal in the directory (right click in it and select "open in terminal") and input `python get_json.py translate`. There should be two new files in the directory titled `translate_descriptionsList.txt` and `translate_nameList.txt`.
+8. Open `translate_descriptionsList.txt` and paste the contents into your preferred translation program. Copy the translated list and replace the contents of `translate_descriptionsList.txt` with it.
+9. Repeat Step 8, but with `translate_nameList.txt`.
+10. Open terminal in the directory (right click in it and select "open in terminal") and input `python translate_json.py translate`.
+11. Open the "translate" folder. The names and descriptions of the Json Assets shirts are now all translated to your preferred language. 
+
 -------
 
 ## Convert Hairstyles to Fashion Sense mod packs!
@@ -53,13 +66,13 @@ Then, run
 `npm start -- -- --conversionType=hair --isColorable --authorName=NAMEOFAUTHOR --hairDescriptor=ADJECTIVE`.
 There are a few customizable parameters that you can alter accordingly. First,
 you should enter the original name of the author whose hairstyles you are
-converting. This will enter it in Fashion Sense as `AUTHOR's Hairstyle 01`. If
+converting. This will enter it in Fashion Sense as `AUTHOR's 01`. If
 you specify a `hairDescriptor`, it will add that after the author's name,
-resulting in `AUTHOR's ADJECTIVE Hairstyle 01`, which makes it a lot easier to
+resulting in `AUTHOR's ADJECTIVE 01`, which makes it a lot easier to
 search for hairstyles you want in the Fashion Sense interface later.
 
 For example, if you enter the command `npm start -- -- --conversionType=hair --isColorable --authorName=BikiFae --hairDescriptor=Braided`,
-it will result in hairstyles named as `BikiFae's Braided Hairstyle 01 (Dyeable)`.
+it will result in hairstyles named as `BikiFae's Braided 01 (Dyeable)`.
 
 After executing the command above with the parameters you want, you will find
 the Fashion Sense converted hairstyles in the `output` directory, with the file
@@ -96,12 +109,14 @@ Not only can you sort it by colorable/noncolorable, but you can also sort it by 
 New functionality has been added to the project! Now you can convert Json Assets
 clothing and hat packs into Fashion Sense content packs.
 
-### Step 1 - Copy the files over
+### Step 1 - Translate the JSONs of any Hats OR Shirts folders with [this](https://www.nexusmods.com/stardewvalley/mods/9961?tab=files) JSON batch translator by Kartoffels **if the contents of your JA package are in Chinese, Japanese, or Korean characters**. See the section below "Setup Instructions" for a full usage guide.
+
+### Step 2 - Copy the files over
 Inside the JSON assets package, copy the entire contents of the Hats OR Shirts
 directory inside the JA package over to the `input` directory. This application
 can only handle converting ONLY hats OR shirts at one time.
 
-### Step 2 - Run the Code!
+### Step 3 - Run the Code!
 Run the following command:
 
 for a shirt:
@@ -117,37 +132,20 @@ npm start -- -- --conversionType=TYPE --authorName=AUTHOR --prefix=PREFIX
 - where `PREFIX` is a descriptor you want to go between the author name and the
 name of the item for all items in the set, for example, if it's a summer set,
 and you pass in `--prefix=Summer` then the items will be called something like
-`AUTHOR's Summer Blouse`. This is an OPTIONAL parameter and be removed if you
+`AUTHOR's Summer Shirt`. This is an OPTIONAL parameter and be removed if you
 do not want to use it.
 - if you don't want any of the shirts to have sleeves in the Fashion Sense
 framework, remove the `--hasSleeves` parameter from the command above. This
 only applies if you are using `--conversionType=shirt`.
 
-Note: currently all sleeves default to white, since it's difficult to
-programmatically and accurately determine which color the sleeves *should* be.
-You can manually go in and change this later, file by file, if you so choose.
-
-### Step 3 - Copy the Files over to your Fashion Sense pack!
+### Step 4 - Almost done!
 You will find the Fashion Sense shirts inside the `output` directory after
 running the command mentioned above. Go ahead and drag the contents of the
 `output` directory into a directory called `Shirts` in your Fashion Sense pack.
 
+### Step 5 - Fix the Sleeves!
+Currently all sleeves default to white, but [my fork](https://github.com/petitepaddingtonbear/sleeveColorizer) of Elizabeth's Sleeve Colorizer can fix that with a Python script!
 
-### Step 4 (Optional) - Fix the Sleeve Colors
-1. Open the shirt.png file in your image editor of choice, one that specifically
-can read RGB values. I personally use GIMP for this, since it's free and
-open-source.
-2. Use the eye drop tool to select the color you want the sleeves to be, and
-find its RGB value.
-3. Open the shirt.json
-4. The property you'll be editing is `SleeveColors` and you'll have to edit it
-to be the same for both `FrontShirt`, `BackShirt`, `LeftShirt`, and `RightShirt`
-properties. As stated in the Fashion Sense documentation, "The first color
-given will replace the vanilla sleeve's darkest color, while the second
-replaces the medium color and the last will replace the lightest color."
-5. Take the RGB values and put them in that order for the `SleeveColors`
-property of all four options.
-6. Test it in game, and if you don't like the color, tweak it and preview it
-quickly via `fs_reload`.
+
 
 
