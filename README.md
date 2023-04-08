@@ -109,7 +109,8 @@ Not only can you sort it by colorable/noncolorable, but you can also sort it by 
 New functionality has been added to the project! Now you can convert Json Assets
 clothing and hat packs into Fashion Sense content packs.
 
-### Step 1 - Translate the JSONs of any Hats OR Shirts folders with [this](https://www.nexusmods.com/stardewvalley/mods/9961?tab=files) JSON batch translator by Kartoffels **if the contents of your JA package are in Chinese, Japanese, or Korean characters**. See the section below "Setup Instructions" for a full usage guide.
+### Step 1 - Translate! 
+Translate the JSONs of any Hats OR Shirts folders with [this](https://www.nexusmods.com/stardewvalley/mods/9961?tab=files) JSON batch translator by Kartoffels **if the contents of your JA package are in Chinese, Japanese, or Korean characters**. See the section below "Setup Instructions" for a full usage guide.
 
 ### Step 2 - Copy the files over
 Inside the JSON assets package, copy the entire contents of the Hats OR Shirts
